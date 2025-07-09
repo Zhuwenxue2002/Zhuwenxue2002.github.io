@@ -1,0 +1,691 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="XIAOBAI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Vue-路由传参在vue中，页面路由里不再只能由 ?key&#x3D;value 的形式传递参数 还可以使用路径参数的方式传递参数  路径参数router.js 路由规则准备页面ShowDetail，并在路由规则中添加路径映射  1234567routes: [    &#123;        path: &quot;&#x2F;showDetail&#x2F;:id&#x2F;:laguage&quot;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue-router-路由传参">
+<meta property="og:url" content="http://blog.170827.xyz/2024/05/09/Vue-router-%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82/index.html">
+<meta property="og:site_name" content="XIAOBAI的个人博客">
+<meta property="og:description" content="Vue-路由传参在vue中，页面路由里不再只能由 ?key&#x3D;value 的形式传递参数 还可以使用路径参数的方式传递参数  路径参数router.js 路由规则准备页面ShowDetail，并在路由规则中添加路径映射  1234567routes: [    &#123;        path: &quot;&#x2F;showDetail&#x2F;:id&#x2F;:laguage&quot;,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-09T18:15:12.000Z">
+<meta property="article:modified_time" content="2025-07-09T08:56:49.397Z">
+<meta property="article:author" content="XIAOBAI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Vue-router-路由传参 - XIAOBAI的个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.170827.xyz","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>XIAOBAI的个人博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/my-categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Vue-router-路由传参"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-09 18:15" pubdate>
+          2024年5月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Vue-router-路由传参</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Vue-路由传参"><a href="#Vue-路由传参" class="headerlink" title="Vue-路由传参"></a>Vue-路由传参</h1><p>在vue中，页面路由里不再只能由 ?key&#x3D;value 的形式传递参数</p>
+<p>还可以使用路径参数的方式传递参数</p>
+<hr>
+<h3 id="路径参数"><a href="#路径参数" class="headerlink" title="路径参数"></a>路径参数</h3><h5 id="router-js-路由规则"><a href="#router-js-路由规则" class="headerlink" title="router.js 路由规则"></a>router.js 路由规则</h5><p>准备页面ShowDetail，并在路由规则中添加路径映射 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">routes</span>: [<br>    &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/showDetail/:id/:laguage&quot;</span>,<br>        <span class="hljs-attr">component</span>: <span class="hljs-title class_">ShowDetail</span><br>    &#125;,<br>    ……<br>]<br></code></pre></td></tr></table></figure>
+
+<p>这里的&#x2F;:id&#x2F;:laguage是占位符，而不是路径名</p>
+<hr>
+<h5 id="App-vue-声明式路由传参"><a href="#App-vue-声明式路由传参" class="headerlink" title="App.vue 声明式路由传参"></a>App.vue 声明式路由传参</h5><p>使用router-link标签路由到ShowDetial组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/showDetail/1/java&quot;</span>&gt;</span>声明式路由路径传参<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这里的&#x2F;1&#x2F;java都是路径传参，与路由规则中的占位符相呼应</p>
+<hr>
+<h5 id="App-vue-编程式路由传参"><a href="#App-vue-编程式路由传参" class="headerlink" title="App.vue 编程式路由传参"></a>App.vue 编程式路由传参</h5><p>无论是声明式路由还是编程式路由，都是针对路由规则中提前编写好的占位符赋值，没有本质区别</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> &#123; useRouter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span></span><br><span class="language-javascript">  <span class="hljs-keyword">const</span> router = <span class="hljs-title function_">useRouter</span>()</span><br><span class="language-javascript">  </span><br><span class="language-javascript">  <span class="hljs-keyword">function</span> <span class="hljs-title function_">showDetail</span>(<span class="hljs-params">id, name</span>)&#123;</span><br><span class="language-javascript">    <span class="hljs-comment">// 两种不同的实现方法</span></span><br><span class="language-javascript">    <span class="hljs-comment">// router.push(`/showDetail/$&#123;id&#125;/$&#123;name&#125;`)</span></span><br><span class="language-javascript">    router.<span class="hljs-title function_">push</span>(&#123;</span><br><span class="language-javascript">      <span class="hljs-attr">path</span>:<span class="hljs-string">`/showDetail/<span class="hljs-subst">$&#123;id&#125;</span>/<span class="hljs-subst">$&#123;name&#125;</span>`</span></span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;showDetail(2,&#x27;php&#x27;)&quot;</span>&gt;</span>编程式路由路径传参<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="ShowDetail-参数接受"><a href="#ShowDetail-参数接受" class="headerlink" title="ShowDetail 参数接受"></a>ShowDetail 参数接受</h5><p>在ShowDetail组件中，我们使用useRoute方法来接收参数</p>
+<p><em>注：这个方法不是useRouter，那个是编程式路由的API，这个是路由传参的API！！！</em></p>
+<p>使用useRoute生成route对象，用以调用不同的API</p>
+<ul>
+<li>route.params：用以接受路径参数的API</li>
+<li>route.query：用以接受键值对参数的API</li>
+</ul>
+<p><em>使用生命周期的钩子函数可以在传递参数时的页面参数实时变化，个人认为这里可以使用watchEffect监听响应式数据来实现</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-comment">// 接受传递过来的路径参数</span></span><br><span class="language-javascript"><span class="hljs-comment">// 这里使用useRoute，而不是useRouter</span></span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> &#123; useRoute &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span>;</span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> &#123; ref ,onUpdated&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>()</span><br><span class="language-javascript">  <span class="hljs-comment">// 定义响应式数据，用以接受参数</span></span><br><span class="language-javascript">  <span class="hljs-keyword">let</span> languageId = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>)</span><br><span class="language-javascript">  <span class="hljs-keyword">let</span> languageName = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&quot;&quot;</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript">  languageId.<span class="hljs-property">value</span> = route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span></span><br><span class="language-javascript">  languageName.<span class="hljs-property">value</span> = route.<span class="hljs-property">params</span>.<span class="hljs-property">language</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-comment">// 使用生命周期钩子，当每次更新时对页面上的数据重新赋值</span></span><br><span class="language-javascript">  <span class="hljs-title function_">onUpdated</span>(<span class="hljs-function">()=&gt;</span>&#123;</span><br><span class="language-javascript">    languageId.<span class="hljs-property">value</span> = route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span></span><br><span class="language-javascript">    languageName.<span class="hljs-property">value</span> = route.<span class="hljs-property">params</span>.<span class="hljs-property">language</span></span><br><span class="language-javascript">  &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>接受路径参数<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>&#123;&#123;languageId&#125;&#125;&#123;&#123;languageName&#125;&#125;是世界上最好的编程语言<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="键值对参数"><a href="#键值对参数" class="headerlink" title="键值对参数"></a>键值对参数</h3><h5 id="router-js-路由规则-1"><a href="#router-js-路由规则-1" class="headerlink" title="router.js 路由规则"></a>router.js 路由规则</h5><p>准备页面ShowDetail2，并在路由规则中添加路径映射 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">routes</span>: [<br>    &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/showDetail2&quot;</span>,<br>        <span class="hljs-attr">component</span>: <span class="hljs-title class_">ShowDetail2</span><br>    &#125;,<br>    ……<br>]<br></code></pre></td></tr></table></figure>
+
+<p>与路径参数不同，键值对参数中对路径不做任何修改</p>
+<hr>
+<h5 id="App-vue-声明式路由传参-1"><a href="#App-vue-声明式路由传参-1" class="headerlink" title="App.vue 声明式路由传参"></a>App.vue 声明式路由传参</h5><p>使用router-link标签路由到ShowDetial2组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/showDetail2?id=1&amp;language=java&quot;</span>&gt;</span>声明式路由键值对传参1<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">v-bind:to</span>=<span class="hljs-string">&quot;&#123;path:&#x27;/showDetail2&#x27;,query:&#123;id:2,language:&#x27;php&#x27;&#125;&#125;&quot;</span>&gt;</span>声明式路由键值对传参2<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>第一种方式就很熟悉了，用常见的?key&#x3D;value就可以传递键值对参数</p>
+<p>第二种方式使用v-bind绑定to属性，就可以以对象的形式对to属性赋值，这种方式对参数个数，内容的使用更加灵活</p>
+<hr>
+<h5 id="App-vue-编程式路由传参-1"><a href="#App-vue-编程式路由传参-1" class="headerlink" title="App.vue 编程式路由传参"></a>App.vue 编程式路由传参</h5><p>与之对应的，编程式路由也有俩种写法</p>
+<p>将router.push的参数写成对象的形式时，query就负责存放传递的键值对</p>
+<p><em>注：为了区分变量名，我们将形参改为paraId和paramLanguage</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> &#123; useRouter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span></span><br><span class="language-javascript">  <span class="hljs-keyword">const</span> router = <span class="hljs-title function_">useRouter</span>()</span><br><span class="language-javascript">  </span><br><span class="language-javascript">  <span class="hljs-keyword">function</span> <span class="hljs-title function_">showDetail2</span>(<span class="hljs-params">id, language</span>)&#123;</span><br><span class="language-javascript">    router.<span class="hljs-title function_">push</span>(<span class="hljs-string">`/showDetail2?id=<span class="hljs-subst">$&#123;id&#125;</span>&amp;language=<span class="hljs-subst">$&#123;language&#125;</span>`</span>)</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript">    </span><br><span class="language-javascript">  <span class="hljs-keyword">function</span> <span class="hljs-title function_">showDetail2</span>(<span class="hljs-params">paramId, paramLanguage</span>)&#123;</span><br><span class="language-javascript">    router.<span class="hljs-title function_">push</span>(&#123;</span><br><span class="language-javascript">      <span class="hljs-attr">path</span>:<span class="hljs-string">`/showDetail2`</span>，</span><br><span class="language-javascript">      <span class="hljs-attr">query</span>:&#123;<span class="hljs-attr">id</span>:paramId,<span class="hljs-attr">language</span>:paramLanguage&#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;showDetail2(3,&#x27;python&#x27;)&quot;</span>&gt;</span>编程式路由键值对传参<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="ShowDetail-参数接受-1"><a href="#ShowDetail-参数接受-1" class="headerlink" title="ShowDetail 参数接受"></a>ShowDetail 参数接受</h5><p>在ShowDetail组件中，我们使用useRoute方法来接收参数</p>
+<p><em>注：这个方法不是useRouter，那个是编程式路由的API，这个是路由传参的API！！！</em></p>
+<p>使用useRoute生成route对象，用以调用不同的API</p>
+<ul>
+<li>route.params：用以接受路径参数的API</li>
+<li>route.query：用以接受键值对参数的API</li>
+</ul>
+<p><em>使用生命周期的钩子函数可以在传递参数时的页面参数实时变化，个人认为这里可以使用watchEffect监听响应式数据来实现</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-comment">// 接受传递过来的键值对</span></span><br><span class="language-javascript"><span class="hljs-comment">// 这里使用useRoute，而不是useRouter</span></span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> &#123; useRoute &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span>;</span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> &#123; ref ,onUpdated&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>()</span><br><span class="language-javascript">  <span class="hljs-comment">// 定义响应式数据，用以接受参数</span></span><br><span class="language-javascript">  <span class="hljs-keyword">let</span> languageId = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>)</span><br><span class="language-javascript">  <span class="hljs-keyword">let</span> languageName = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&quot;&quot;</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript">  languageId.<span class="hljs-property">value</span> = route.<span class="hljs-property">query</span>.<span class="hljs-property">id</span></span><br><span class="language-javascript">  languageName.<span class="hljs-property">value</span> = route.<span class="hljs-property">query</span>.<span class="hljs-property">language</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-comment">// 使用生命周期钩子，当每次更新时对页面上的数据重新赋值</span></span><br><span class="language-javascript">  <span class="hljs-title function_">onUpdated</span>(<span class="hljs-function">()=&gt;</span>&#123;</span><br><span class="language-javascript">    languageId.<span class="hljs-property">value</span> = route.<span class="hljs-property">query</span>.<span class="hljs-property">id</span></span><br><span class="language-javascript">    languageName.<span class="hljs-property">value</span> = route.<span class="hljs-property">query</span>.<span class="hljs-property">language</span></span><br><span class="language-javascript">  &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>接受键值对参数<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>&#123;&#123;languageId&#125;&#125;&#123;&#123;languageName&#125;&#125;是世界上最好的编程语言<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><em><strong>然而，路由传参其实也算是组件之间的参数传递，我们最后仍然是使用Pinia工具更好的实现组件间传参，仍然白学</strong></em> 😓 </p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JAVAWEB/" class="category-chain-item">JAVAWEB</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/JAVAWEB/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Vue-router-路由传参</div>
+      <div>http://blog.170827.xyz/2024/05/09/Vue-router-路由传参/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>XIAOBAI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/09/Vue-router-%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB/" title="Vue-router-路由守卫">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue-router-路由守卫</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/08/Vue-router-%E8%B7%AF%E7%94%B1%E6%9C%BA%E5%88%B6/" title="Vue-router-路由机制">
+                        <span class="hidden-mobile">Vue-router-路由机制</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

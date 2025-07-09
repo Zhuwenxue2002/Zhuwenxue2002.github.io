@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="XIAOBAI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="路径问题相对路径 不以&#x2F; 开头 .&#x2F; 表示当前资源的路经 ..&#x2F; 表示当前资源的上一层路经  缺点：目标资源路径受到当前资源路径的影响，不同的位置，相对路径的写法不同  目标资源的请求全过程当前资源请求路径：http:&#x2F;&#x2F;localhost:8080&#x2F;demo&#x2F;index.html 当前资源是：index.html 当前资源的所在路径：http:&#x2F;&#x2F;localhost">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路径问题">
+<meta property="og:url" content="http://blog.170827.xyz/2024/04/16/%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="XIAOBAI的个人博客">
+<meta property="og:description" content="路径问题相对路径 不以&#x2F; 开头 .&#x2F; 表示当前资源的路经 ..&#x2F; 表示当前资源的上一层路经  缺点：目标资源路径受到当前资源路径的影响，不同的位置，相对路径的写法不同  目标资源的请求全过程当前资源请求路径：http:&#x2F;&#x2F;localhost:8080&#x2F;demo&#x2F;index.html 当前资源是：index.html 当前资源的所在路径：http:&#x2F;&#x2F;localhost">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.170827.xyz/upload/%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98-%E5%90%8E%E7%AB%AF%E8%B5%84%E6%BA%90%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98.png">
+<meta property="article:published_time" content="2024-04-16T17:28:44.000Z">
+<meta property="article:modified_time" content="2025-07-09T08:56:49.404Z">
+<meta property="article:author" content="XIAOBAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://blog.170827.xyz/upload/%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98-%E5%90%8E%E7%AB%AF%E8%B5%84%E6%BA%90%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98.png">
+  
+  
+  
+  <title>路径问题 - XIAOBAI的个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.170827.xyz","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>XIAOBAI的个人博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/my-categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="路径问题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-16 17:28" pubdate>
+          2024年4月16日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          972 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">路径问题</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="路径问题"><a href="#路径问题" class="headerlink" title="路径问题"></a>路径问题</h1><h3 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h3><ul>
+<li>不以&#x2F; 开头</li>
+<li>.&#x2F; 表示当前资源的路经</li>
+<li>..&#x2F; 表示当前资源的上一层路经</li>
+</ul>
+<p><em>缺点：目标资源路径受到当前资源路径的影响，不同的位置，相对路径的写法不同</em></p>
+<hr>
+<h5 id="目标资源的请求全过程"><a href="#目标资源的请求全过程" class="headerlink" title="目标资源的请求全过程"></a>目标资源的请求全过程</h5><p>当前资源请求路径：<a target="_blank" rel="noopener" href="http://localhost:8080/demo/index.html">http://localhost:8080/demo/index.html</a></p>
+<p>当前资源是：index.html</p>
+<p>当前资源的所在路径：<a target="_blank" rel="noopener" href="http://localhost:8080/demo">http://localhost:8080/demo</a></p>
+<p>目标资源的相对路径：static&#x2F;img&#x2F;logo.png</p>
+<p>当页面加载到有相对路径的目标资源时，会将当前资源所在路经与目标资源的相对路径拼接，然后发送请求找目标资源</p>
+<p>目标资源的完整路径：<a target="_blank" rel="noopener" href="http://localhost:8080/demo/static/img/logo.png">http://localhost:8080/demo/static/img/logo.png</a></p>
+<hr>
+<h5 id="请求转发的问题"><a href="#请求转发的问题" class="headerlink" title="请求转发的问题"></a>请求转发的问题</h5><p>在进行请求转发时，浏览器中URL不变</p>
+<p>在获取相对路径的资源时，还是会把原URL的路经作i为当前资源路经与相对进行路经拼接</p>
+<p><em><strong>因此，资源文件的加载，是针对客户端而言，针对URL而言的，单纯的看服务端的目录结构来写相对路径是不对的</strong></em>😮</p>
+<hr>
+<h3 id="绝对路经"><a href="#绝对路经" class="headerlink" title="绝对路经"></a>绝对路经</h3><ul>
+<li><p>以&#x2F; 开头</p>
+</li>
+<li><p>不同的项目中，固定的路径出发点可能不一样，<em>可以先测试一下</em></p>
+</li>
+</ul>
+<p><em>以Tomcat10为例，绝对路径的出发点是<a target="_blank" rel="noopener" href="http://localhost:8080/%EF%BC%8C**%E4%B8%8D%E5%8C%85%E5%90%AB%E4%B8%8A%E4%B8%8B%E6%96%87%E8%B7%AF%E5%BE%84">http://localhost:8080/，**不包含上下文路径</a>**</em></p>
+<p>如果要写绝对路径，应该写成：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/demo05/static/img/logo.png&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><em>优点：目标资源路径的写法不会受到当前资源路径的影响，不同的位置，绝对路径的写法一致</em></p>
+<p><em><strong>缺点：绝对路径要补充项目的上下文，而上下文是经常改变的</strong></em></p>
+<hr>
+<h5 id="base标签的妙用（不完美）"><a href="#base标签的妙用（不完美）" class="headerlink" title="base标签的妙用（不完美）"></a>base标签的妙用（不完美）</h5><p>通过 head&gt;base&gt;href属性，定义相对路径公共前缀，通过公共前缀把一个相对路径转换为绝对路径</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">base</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/demo/&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>在定义此标签后，所有<strong>没有前缀</strong>的相对路径前都会加上此<strong>上下文路径</strong>(&#x2F;demo&#x2F;)</p>
+<p>这样就能把一个相对路径转换为一个带有上下文的绝对路径访问</p>
+<p><em>当上下文路径发生变化时，可以将base标签的href属性更改即可</em>😊</p>
+<hr>
+<h3 id="后端资源的路径问题"><a href="#后端资源的路径问题" class="headerlink" title="后端资源的路径问题"></a>后端资源的路径问题</h3><h5 id="相对路径-1"><a href="#相对路径-1" class="headerlink" title="相对路径"></a>相对路径</h5><p>在进行请求转发或响应重定向时，也会出现路径问题，并且与资源获取的路径问题大致相同</p>
+<h5 id="响应重定向的路经"><a href="#响应重定向的路经" class="headerlink" title="响应重定向的路经"></a>响应重定向的路经</h5><p>在响应重定向使用绝对路经时，和前端一样，需要加拼接上下文路经（访问路经）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">resp.sendRedirect(<span class="hljs-string">&quot;/demo/ServletB&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>但是，这样也会出先与前端相同的问题：当我们修改上下文路经时，后端代码需要同步修改</p>
+<p>为了解决这个问题，<strong>我们应该动态获取上下文路径，再与重定向路经进行拼接</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">contextPath</span> <span class="hljs-operator">=</span> req.getContextPath();<br>resp.sendRedirect(contextPath + <span class="hljs-string">&quot;/ServletB&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="请求转发的路经"><a href="#请求转发的路经" class="headerlink" title="请求转发的路经"></a>请求转发的路经</h5><p><em><strong>与响应重定向不同，请求转发的路经时不需要拼接上下文路经的！！！</strong></em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">req.getRequestDispatcher(<span class="hljs-string">&quot;/ServletB&quot;</span>).forward(req, resp);<br></code></pre></td></tr></table></figure>
+
+<p>在请求转发时，资源路径的地址是：<a target="_blank" rel="noopener" href="http://localhost:8080/demo/">http://localhost:8080/demo/</a></p>
+<p>与前面的绝对路经都不相同，所以我们在请求转发到绝对路径时，是不需要拼接上下文路径的</p>
+<hr>
+<h1 id="路经问题的最终解决方法"><a href="#路经问题的最终解决方法" class="headerlink" title="路经问题的最终解决方法*"></a>路经问题的最终解决方法*</h1><p>为了解决前端后端的所有路径问题，我们最终采用的方案就是——不设置上下文路经！！！😝</p>
+<p><em>是的你没听错，前面的全部白学！！！</em></p>
+<p><img src="/upload/%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98-%E5%90%8E%E7%AB%AF%E8%B5%84%E6%BA%90%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98.png" srcset="/img/loading.gif" lazyload alt="路径问题-后端资源的路径问题.png"></p>
+<p>当上下文路经设置为&#x2F; 时，我们所有资源的访问路经都可以设置为绝对路径的方式，并且忽略上下文路经，这也是实战开发中所采取的方式</p>
+<hr>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JAVA/" class="category-chain-item">JAVA</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/JAVA/java-web/" class="category-chain-item">java-web</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>路径问题</div>
+      <div>http://blog.170827.xyz/2024/04/16/路径问题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>XIAOBAI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/17/MVC%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F/" title="MVC架构模式">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MVC架构模式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/16/WEB%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" title="WEB乱码问题汇总">
+                        <span class="hidden-mobile">WEB乱码问题汇总</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

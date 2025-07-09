@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="XIAOBAI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Csharp基础入门C#的文件后缀是.cs 在一个解决方案中会有N个项目文件夹 在C#中，控制台输出的方式是调用System命名空间中的console类中的WriteLine()方法 System命名空间由.Net提供，有很多程序的基础功能 123System.Console.WriteLine();&#x2F;&#x2F; 在控制台中输出内容System.Console.ReadLine();&#x2F;&#x2F; 在控制台中输入内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Csharp基础入门">
+<meta property="og:url" content="http://blog.170827.xyz/2024/09/13/Csharp%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="XIAOBAI的个人博客">
+<meta property="og:description" content="Csharp基础入门C#的文件后缀是.cs 在一个解决方案中会有N个项目文件夹 在C#中，控制台输出的方式是调用System命名空间中的console类中的WriteLine()方法 System命名空间由.Net提供，有很多程序的基础功能 123System.Console.WriteLine();&#x2F;&#x2F; 在控制台中输出内容System.Console.ReadLine();&#x2F;&#x2F; 在控制台中输入内">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-13T13:46:47.000Z">
+<meta property="article:modified_time" content="2025-07-09T08:56:49.385Z">
+<meta property="article:author" content="XIAOBAI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Csharp基础入门 - XIAOBAI的个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.170827.xyz","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>XIAOBAI的个人博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/my-categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Csharp基础入门"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-13 13:46" pubdate>
+          2024年9月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Csharp基础入门</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Csharp基础入门"><a href="#Csharp基础入门" class="headerlink" title="Csharp基础入门"></a>Csharp基础入门</h1><p>C#的文件后缀是.cs</p>
+<p>在一个解决方案中会有N个项目文件夹</p>
+<p>在C#中，控制台输出的方式是调用System命名空间中的console类中的WriteLine()方法</p>
+<p>System命名空间由.Net提供，有很多程序的基础功能</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#">System.Console.WriteLine();<span class="hljs-comment">// 在控制台中输出内容</span><br>System.Console.ReadLine();<span class="hljs-comment">// 在控制台中输入内容</span><br>System.Console.ReadKey();<span class="hljs-comment">// 从控制台读取用户输入的一个按键</span><br></code></pre></td></tr></table></figure>
+
+<p><em>在Rider中，输出内容的快捷键从sout变成cw了</em>  😊</p>
+<hr>
+<h3 id="命名空间概念"><a href="#命名空间概念" class="headerlink" title="命名空间概念"></a>命名空间概念</h3><p>在Java中，管理多个类的目录结构是<code>包</code>，以package关键字声明</p>
+<p>在C#中，管理多个类的目录结构是<code>命名空间</code>，以namespace关键字声明</p>
+<p>而在导入的过程中，Java使用import关键字导包</p>
+<p>而C#使用using关键字导入命名空间</p>
+<p><strong>以类名作为文件名，以命名空间名作为目录结构名</strong></p>
+<hr>
+<h3 id="命名规则差异"><a href="#命名规则差异" class="headerlink" title="命名规则差异"></a>命名规则差异</h3><ol>
+<li><strong>类名和接口名</strong>：<ul>
+<li>C# 中的类名和接口名同样使用大写的首字母（PascalCase），例如：<code>MyClass</code>。</li>
+<li>C# 的类名通常以 <code>.cs</code> 扩展名保存。</li>
+</ul>
+</li>
+<li><strong>命名空间</strong>：<ul>
+<li>C# 中的命名空间（Namespace）通常使用大写的首字母，例如：<code>MyCompany.MyApp</code>。</li>
+<li>命名空间通常反映了公司或产品的名称结构。</li>
+</ul>
+</li>
+<li><strong>常量名</strong>：<ul>
+<li>C# 中的常量名通常使用全大写，单词间用下划线分隔，例如：<code>MY_CONSTANT</code>。</li>
+</ul>
+</li>
+<li><strong>字段名</strong>：<ul>
+<li>私有字段通常以下划线开头加驼峰命名法，例如：<code>_myField</code>。</li>
+<li>公共属性（Property）通常使用驼峰命名法，首字母大写，例如：<code>MyProperty</code>。</li>
+</ul>
+</li>
+<li><strong>方法名</strong>：<ul>
+<li>在C#中方法名通常使用大写开头的驼峰命名方法，例如：<code>MyMethodName</code>。</li>
+</ul>
+</li>
+</ol>
+<h5 id="一些其他差异"><a href="#一些其他差异" class="headerlink" title="一些其他差异"></a>一些其他差异</h5><ol>
+<li><strong>包&#x2F;命名空间的大小写</strong>：<ul>
+<li>Java 中的包名通常全部小写，而 C# 中的命名空间可以使用大小写混合。</li>
+</ul>
+</li>
+<li><strong>文件扩展名</strong>：<ul>
+<li>Java 文件扩展名为 <code>.java</code>，而 C# 文件扩展名为 <code>.cs</code>。</li>
+</ul>
+</li>
+<li><strong>方法参数</strong>：<ul>
+<li>参数名通常使用小写字母开始的驼峰命名法，例如：<code>myParameter</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>在C#中，<code>var</code> 关键字是一个类型推断关键字，它允许你在声明变量时省略变量的具体类型</p>
+<p>编译器会根据变量的初始值自动推断出变量的类型</p>
+<p>这使得代码更加简洁，尤其是在类型显而易见的情况下</p>
+<p><em>注：在使用var进行变量声明时，不能不初始化改变量（延迟初始化）</em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">var</span> message = <span class="hljs-string">&quot;Hello, World!&quot;</span>;  <span class="hljs-comment">// 类型为 string</span><br><span class="hljs-keyword">var</span> number = <span class="hljs-number">42</span>;               <span class="hljs-comment">// 类型为 int</span><br><span class="hljs-keyword">var</span> collection = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-built_in">int</span>&gt;();  <span class="hljs-comment">// 类型为 List&lt;int&gt;</span><br><br><span class="hljs-keyword">var</span> x;  <span class="hljs-comment">// 编译错误</span><br>x = <span class="hljs-number">10</span>; <span class="hljs-comment">// 也不能这样写</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>与Java的数据类型基本相同，C#也有基本数据类型与其包装类型</p>
+<p>在C# 中多一个decimal类型，他比double的精度更高，更适用于金融类型数据的处理</p>
+<p><em>decimal中文释义：十进制</em></p>
+<p>需要注意的是，在不同的数据进行运算时，会默认进行隐式转换（有低类型到高类型的转换）</p>
+<h5 id="nullable（可空类型）"><a href="#nullable（可空类型）" class="headerlink" title="nullable（可空类型）"></a>nullable（可空类型）</h5><p>C# 提供了一个特殊的数据类型，<strong>nullable</strong> 类型（可空类型），可空类型可以表示其基础值类型正常范围内的值，再加上一个 null 值</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span>? num1 = <span class="hljs-literal">null</span>;<br><span class="hljs-built_in">int</span>? num2 = <span class="hljs-number">45</span>;<br><span class="hljs-built_in">double</span>? num3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">double</span>?();<br><span class="hljs-built_in">double</span>? num4 = <span class="hljs-number">3.14157</span>;<br><br><span class="hljs-built_in">bool</span>? boolval = <span class="hljs-keyword">new</span> <span class="hljs-built_in">bool</span>?();<br></code></pre></td></tr></table></figure>
+
+<h5 id="Null-合并运算符（-）"><a href="#Null-合并运算符（-）" class="headerlink" title="Null 合并运算符（ ?? ）"></a>Null 合并运算符（ ?? ）</h5><p>C# 中两个问号的作用是判断<code>??</code>左边的对象是否为 null，如果不为 null 则使用<code>??</code> 左边的对象，如果为 null 则使用 <code>??</code> 右边的对象</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">num3 = num1 ?? <span class="hljs-number">5.34</span>;<br>num3 = (num1 == <span class="hljs-literal">null</span>) ? <span class="hljs-number">5.34</span> : num1;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p>在C# 中，字符串类是string，而Java是String</p>
+<p>与Java相同，C#提供了很多有关于字符串操作的方法，而且这些常用方法的重载十分有用，在合适的场景填写合适的参数</p>
+<hr>
+<h5 id="插值字符串"><a href="#插值字符串" class="headerlink" title="插值字符串"></a>插值字符串</h5><p>这是C#提供的一个语法糖，其语法为：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;xiaobai&quot;</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">$&quot;hello, my name is <span class="hljs-subst">&#123;name&#125;</span>&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="Split方法"><a href="#Split方法" class="headerlink" title="Split方法"></a>Split方法</h5><p>选用分隔符，对字符串进行分割</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">var</span> message = <span class="hljs-string">&quot;Hello world&quot;</span>;<br><span class="hljs-built_in">string</span>[] strings = message.Split(<span class="hljs-string">&quot; &quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="IndexOf方法"><a href="#IndexOf方法" class="headerlink" title="IndexOf方法"></a>IndexOf方法</h5><p>输出指定字符在字符串中的索引值</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">var</span> message = <span class="hljs-string">&quot;Hello world&quot;</span>;<br><span class="hljs-keyword">var</span> indexOf = message.IndexOf(<span class="hljs-string">&quot; &quot;</span>); <span class="hljs-comment">// 5</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="Join方法"><a href="#Join方法" class="headerlink" title="Join方法"></a>Join方法</h5><p>我们可以使用Join方法对字符串数组进行拼接操作</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">// 示例 1: 使用逗号作为分隔符</span><br><span class="hljs-built_in">string</span>[] fruits = &#123; <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Banana&quot;</span>, <span class="hljs-string">&quot;Cherry&quot;</span> &#125;;<br><span class="hljs-built_in">string</span> result = <span class="hljs-built_in">string</span>.Join(<span class="hljs-string">&quot;, &quot;</span>, fruits);<br>Console.WriteLine(result);  <span class="hljs-comment">// 输出 &quot;Apple, Banana, Cherry&quot;</span><br><br><span class="hljs-comment">// 示例 2: 使用换行符作为分隔符</span><br><span class="hljs-built_in">string</span> result2 = <span class="hljs-built_in">string</span>.Join(<span class="hljs-string">&quot;\n&quot;</span>, fruits);<br>Console.WriteLine(result2);<br><span class="hljs-comment">// 输出</span><br><span class="hljs-comment">// Apple</span><br><span class="hljs-comment">// Banana</span><br><span class="hljs-comment">// Cherry</span><br>    <br><span class="hljs-comment">// 示例 3: 使用自定义分隔符</span><br><span class="hljs-built_in">string</span> customSeparator = <span class="hljs-string">&quot; | &quot;</span>;<br><span class="hljs-built_in">string</span> result3 = <span class="hljs-built_in">string</span>.Join(customSeparator, fruits);<br>Console.WriteLine(result3);  <span class="hljs-comment">// 输出 &quot;Apple | Banana | Cherry&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>然而，在不同的操作系统中，换行符是不同的，所以我们可以使用System.Enviroment提供的只读属性（并非一个方法）NewLine来作为换行符使用</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> result2 = <span class="hljs-built_in">string</span>.Join(Environment.NewLine, fruits);<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="路径拼接"><a href="#路径拼接" class="headerlink" title="路径拼接"></a>路径拼接</h5><p>在开发过程中，我们需要对文件路径的字符串变量进行路径拼接，而在不同系统情况下，路径拼接的连接符是不一样的</p>
+<p>为了解决这个问题，我们使用Path.Combine方法进行路径拼接</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> dir1 = <span class="hljs-string">&quot;Folder&quot;</span>;<br><span class="hljs-keyword">var</span> dir2 = <span class="hljs-string">&quot;SubFolder&quot;</span>;<br><span class="hljs-keyword">var</span> fn = <span class="hljs-string">&quot;readme.md&quot;</span>;<br><br>Path.Combine(dir1,dir2,fn);<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h5><p>通过构造函数，填写指定的参数可以实现一些意想不到的功能</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-built_in">string</span> sep = <span class="hljs-keyword">new</span> <span class="hljs-built_in">string</span>(<span class="hljs-string">&quot;=&quot;</span> , <span class="hljs-number">20</span>); <span class="hljs-comment">// 打印20个=以完成换行符功能</span><br><br><span class="hljs-built_in">char</span>[] chars = [<span class="hljs-string">&#x27;h&#x27;</span>,<span class="hljs-string">&#x27;e&#x27;</span>,<span class="hljs-string">&#x27;l&#x27;</span>,<span class="hljs-string">&#x27;l&#x27;</span>,<span class="hljs-string">&#x27;o&#x27;</span>];<br><span class="hljs-built_in">string</span> str = <span class="hljs-keyword">new</span> <span class="hljs-built_in">string</span>(chars); <span class="hljs-comment">// 以字符数组作为参数可实现字符串的拼接</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h5><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> message1 = <span class="hljs-string">&quot;hellow world!&quot;</span>;<br><span class="hljs-built_in">string</span> message2 = <span class="hljs-string">&quot;hellow world?&quot;</span>;<br><br>message1.CompareTo(message2); <span class="hljs-comment">// 比较出大小，判断ASCII码</span><br>message1.Equals(message2); <span class="hljs-comment">// 单纯判断是否相等，性能更好</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/NET%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3/" class="category-chain-item">NET框架相关</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/NET%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3/c/" class="category-chain-item">c#</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Csharp基础入门</div>
+      <div>http://blog.170827.xyz/2024/09/13/Csharp基础入门/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>XIAOBAI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年9月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/09/13/Csharp%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="Csharp面向对象">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Csharp面向对象</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/08/17/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96-%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/" title="苍穹外卖-微信支付">
+                        <span class="hidden-mobile">苍穹外卖-微信支付</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
